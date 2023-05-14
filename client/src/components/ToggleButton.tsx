@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const ToggleButton: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(
-    () => localStorage.getItem('theme') === 'dark' ?? true
+    () => window.localStorage.getItem('theme') === 'dark'
   )
 
   useEffect(() => {

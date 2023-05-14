@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import ToggleButton from './ToggleButton'
 
@@ -9,31 +9,25 @@ const navItems = [
     text: 'Showcase',
     name: 'showcase',
   },
-  {
-    link: '/pricing',
-    text: 'Pricing',
-    name: 'pricing',
-  },
-  {
-    link: '/explore',
-    text: 'Explore',
-    name: 'explore',
-  },
+
   {
     link: '/aboutus',
     text: 'About Us',
     name: 'aboutus',
   },
+  {
+    link: '/collab',
+    text: 'Collabrate',
+    name: 'collab',
+  },
 ]
 
 const Navbar: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(() => '')
-
   return (
     <div className="sticky top-0 dark:bg-zinc-900 bg-opacity-40 backdrop-blur-lg  w-full border-b-[1px] border-b-gray-200 dark:border-b-gray-700  lg:px-3 py-3 px-4">
-      <div className="container max-w-4xl mx-auto flex items-center justify-between">
+      <div className="container max-w-6xl mx-auto flex items-center justify-between">
         <div>
-          <h1 className="font-bold" onClick={() => setActiveTab('')}>
+          <h1 className="font-bold">
             <Link href={'/'}>Nexus Keepers</Link>
           </h1>
         </div>
@@ -43,15 +37,9 @@ const Navbar: React.FC = () => {
             {navItems.map((item, idx) => (
               <li
                 key={idx}
-                className={` ${
-                  item.name === activeTab
-                    ? 'text-blue-500 '
-                    : 'dark:hover:text-gray-100 hover:text-gray-500'
-                }`}
+                className={`dark:hover:text-gray-100 hover:text-gray-500`}
               >
-                <Link onClick={() => setActiveTab(item.name)} href={item.link}>
-                  {item.text}
-                </Link>
+                <Link href={item.link}>{item.text}</Link>
               </li>
             ))}
           </ul>
