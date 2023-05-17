@@ -24,11 +24,11 @@ const ToggleButton: React.FC = () => {
 
   return (
     <button
-      className={`relative w-20 h-10 dark:bg-zinc-800 rounded-full border-[1px] dark:border-orange-500 border-zinc-300`}
+      className={`relative w-20 h-10 dark:bg-zinc-800 rounded-full border-[1px] dark:border-PrimaryButton text-PrimaryButton border-zinc-500`}
       onClick={() => setIsDarkMode((prev) => !prev)}
     >
       <span
-        className={`grid place-content-center  dark:bg-zinc-950 absolute w-7 aspect-square bg-orange-400 top-1/2 transform -translate-y-1/2 rounded-full ${
+        className={`grid place-content-center  dark:bg-zinc-950 absolute w-7 aspect-square bg-PrimaryButton dark:text-PrimaryButton text-white top-1/2 transform -translate-y-1/2 rounded-full ${
           isDarkMode ? 'right-2 ' : 'left-2'
         }`}
       >
