@@ -8,7 +8,6 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-
 interface ScrollObserverContextType {
   scrollY: number
 }
