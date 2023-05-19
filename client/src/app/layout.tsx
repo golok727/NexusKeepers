@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eAn" className="dark">
+      <link rel="icon" href="/radha.png" type="image/png" sizes="32x32" />
       <body className={`${inter.className} min-h-screen relative`}>
         <ScrollProvider>
           <Navbar />

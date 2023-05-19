@@ -12,7 +12,7 @@ const navItems = [
   },
   {
     link: '/gallery',
-    text: 'Gallary',
+    text: 'Gallery',
     name: 'gallery',
   },
   {

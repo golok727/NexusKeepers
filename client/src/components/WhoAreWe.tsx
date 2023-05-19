@@ -1,11 +1,32 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
 import WhoWeAreGrid from './WhoWeAreGrid'
 import Link from 'next/link'
+import { useScroll } from '@/context/ScrollProvider'
 
 const WhoAreWe = () => {
+  const headerRef = useRef<HTMLHeadingElement | null>(null)
+  const [visible, setVisible] = useState(false)
+
+  const { scrollY } = useScroll()
+
+  useEffect(() => {
+    if (headerRef.current) {
+      const { clientHeight, offsetTop } = headerRef.current
+
+      const headerBottom = offsetTop + clientHeight
+      const isFullEntered = headerBottom < scrollY + window.innerHeight
+      setVisible(isFullEntered)
+    }
+  }, [scrollY])
+
   return (
     <div className="min-h-screen">
-      <header className="mb-10">
+      <header
+        ref={headerRef}
+        className="mb-10 transition-all duration-1000"
+        style={{ opacity: visible ? 1 : 0 }}
+      >
         <h2 className="lg:text-4xl text-xl font-bold">
           Who Are <span className="text-PrimaryButton">We</span> ?
         </h2>

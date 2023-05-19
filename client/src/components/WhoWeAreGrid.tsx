@@ -1,12 +1,33 @@
+'use client'
 import { characters } from '@/app/data'
+import { useScroll } from '@/context/ScrollProvider'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 type CardProps = {
   character: Character
 }
 const Card: React.FC<CardProps> = ({ character: char }) => {
+  const { scrollY } = useScroll()
+  const cardRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const { current: cardContainer } = cardRef
+
+    if (cardContainer) {
+      const { offsetTop, clientHeight } = cardContainer
+
+      const cardBottom = offsetTop + clientHeight
+      const isFullEntered = cardBottom < scrollY + window.innerHeight
+      setIsVisible(isFullEntered)
+    }
+  }, [scrollY])
+
   return (
-    <div className="relative group overflow-hidden border-[1px] dark:hover:border-gray-500 hover:border-gray-500 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer transition-all duration-300 h-fit">
+    <div
+      ref={cardRef}
+      className="relative group overflow-hidden border-[1px] dark:hover:border-gray-500 hover:border-gray-500 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer transition-all duration-300 h-fit hover:scale-[1.01]"
+    >
       <div className="w-full h-[20rem]">
         <img className="object-cover w-full h-full" src={char.image} alt="" />
       </div>
@@ -22,14 +43,17 @@ const Card: React.FC<CardProps> = ({ character: char }) => {
           <span className="text-sm">, {char.title}:</span>
         </h4>
 
-        <div className="grid ">
+        <div className="grid">
           <p className=" text-sm font-light text-gray-700 dark:text-gray-400 py-3">
             {char.description}
           </p>
         </div>
       </section>
 
-      <div className="absolute transition-opacity duration-700 inset-0 bg-slate-100 dark:bg-black opacity-40  pointer-events-none group-hover:opacity-0"></div>
+      <div
+        className="absolute transition-opacity duration-500 inset-0 bg-slate-100 dark:bg-black  pointer-events-none "
+        style={{ opacity: isVisible ? 0 : 0.4 }}
+      ></div>
     </div>
   )
 }
