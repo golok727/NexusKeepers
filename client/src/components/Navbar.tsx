@@ -27,12 +27,17 @@ const navItems = [
     name: 'aboutus',
   },
 ]
+const navbarHiddenRoutes = ['/login', '/signup']
 
 const Navbar: React.FC = () => {
   const pathname = usePathname()
-
   return (
-    <div className="sticky top-0 z-10 bg-opacity-70 dark:bg-opacity-40 dark:bg-black bg-white backdrop-blur-lg w-full border-b-[1px] border-b-gray-200 dark:border-b-gray-700  lg:px-3 py-3 px-4">
+    <div
+      style={{
+        display: navbarHiddenRoutes.includes(pathname) ? 'none' : '',
+      }}
+      className="sticky top-0 z-10 bg-opacity-70 dark:bg-opacity-40 dark:bg-black bg-white backdrop-blur-lg w-full border-b-[1px] border-b-gray-200 dark:border-b-gray-700  lg:px-3 py-3 px-4"
+    >
       <div className="container max-w-6xl mx-auto flex items-center justify-between">
         <div>
           <h1 className="font-bold">

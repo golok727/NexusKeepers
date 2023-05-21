@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 const varela = Varela_Round({ subsets: ['latin'], weight: '400' })
 export const metadata = {
   title: 'NexusKeepers',
-  description: '',
+  description: 'Nexus Keepers Home Page',
 }
 
 export default function RootLayout({

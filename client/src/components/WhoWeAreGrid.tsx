@@ -25,6 +25,7 @@ const Card: React.FC<CardProps> = ({ character: char }) => {
 
   return (
     <div
+      tabIndex={0}
       ref={cardRef}
       className="relative group overflow-hidden border-[1px] dark:hover:border-gray-500 hover:border-gray-500 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer transition-all duration-300 h-fit hover:scale-[1.01]"
     >
