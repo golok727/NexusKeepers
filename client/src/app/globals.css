@@ -15,6 +15,12 @@
   body {
     @apply dark:bg-zinc-900 dark:text-white transition-colors duration-700;
   }
+  .login__input-styles {
+    @apply bg-transparent border-[1px] border-SecondaryButton group-hover:border-PrimaryButton group-focus-within:border-PrimaryButton transition-colors duration-300 py-2 px-3 rounded-md;
+  }
+  .home-button-styles {
+    @apply absolute right-4 top-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 text-gray-600 hover:text-Accent focus:text-Accent;
+  }
 }
 
 .slide-in {

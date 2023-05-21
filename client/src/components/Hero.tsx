@@ -1,8 +1,12 @@
 'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Hero = () => {
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
+    if (!theme) localStorage.setItem('theme', 'dark')
+  }, [])
   return (
     <section
       id="hero"

@@ -2,11 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import NexusKeepers from '../../assets/images/app.jpg'
 import Link from 'next/link'
+import { HomeIcon } from '@radix-ui/react-icons'
 
 const page = () => {
   return (
     <div className="group min-h-screen mx-auto max-w-6xl grid place-items-center">
-      <div className="grid lg:grid-cols-2 group-hover:border-b-[1px] border-PrimaryButton overflow-hidden rounded-md ">
+      <div className="grid lg:grid-cols-2 group-hover:border-b-[1px] group-focus-within:border-b-[1px] border-PrimaryButton overflow-hidden rounded-md relative">
         <div className="">
           <Image
             src={NexusKeepers}
@@ -20,7 +21,7 @@ const page = () => {
             <div className="flex flex-col gap-2">
               <label htmlFor="email">Email</label>
               <input
-                className="bg-transparent border-[1px] border-SecondaryButton group-hover:border-PrimaryButton transition-colors duration-300 py-2 px-3 rounded-md"
+                className="login__input-styles"
                 placeholder="Eg: someone@email.com"
                 type="email"
                 id="email"
@@ -30,7 +31,7 @@ const page = () => {
             <div className="flex flex-col gap-2">
               <label htmlFor="password">Password</label>
               <input
-                className="bg-transparent border-[1px] border-SecondaryButton group-hover:border-PrimaryButton transition-colors duration-300 py-2 px-3 rounded-md"
+                className="login__input-styles"
                 placeholder="Password"
                 type="password"
                 id="password"
@@ -56,6 +57,10 @@ const page = () => {
             </p>
           </div>
         </div>
+
+        <Link href={'/'} aria-label="Go home" className="home-button-styles">
+          <HomeIcon />
+        </Link>
       </div>
     </div>
   )
